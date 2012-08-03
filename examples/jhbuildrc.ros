@@ -23,7 +23,10 @@
 # repos to use as alternative to whatever is declared in moduleset file
 # repos['ros.org'] = 'git@github.com:tkruse/unilint.git'
 
+# need this else jhbuild ignores local modulesets
 use_local_modulesets = True
+
+
 
 # ros.modules file declared in modulesetpath (jhbuild source)
 moduleset = 'ros'
@@ -31,6 +34,12 @@ moduleset = 'ros'
 modules = ['ros_comm', 'actionlib']
 
 checkoutroot = '~/jhbuild_tutorial/ros_base_workspace'
+# Name of root build folder, defaults to (None) workspace 
+buildroot = checkoutroot
+# name of build folder in project, defaults to "%s" (in-source)
+# only works if buildroot is not None
+builddir_pattern = '%s/build'
+
 
 # the prefix to configure/install modules to (must have write access)
 prefix = '~/jhbuild_tutorial/ros_base_install'
