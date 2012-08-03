@@ -1,0 +1,142 @@
+<?xml version="1.0" standalone="no"?> <!--*- mode: nxml -*-->
+<?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
+<moduleset>
+  <repository type="svn" name="code.ros.org/ros"
+      href="https://code.ros.org/svn/ros/stacks/"/>
+  <repository type="git" name="github/ros"
+      href="https://github.com/ros"/>
+  <repository type="git" name="github/wg-debs"
+      href="https://github.com/wg-debs"/>
+
+
+  <cmake id = 'ros'>
+    <branch repo="code.ros.org/ros"
+            version="debian/ros-fuerte-ros_1.8.9_lucid"/>
+    <dependencies>
+      <dep package="catkin"/>
+      <dep package="rospack"/>
+    </dependencies>
+  </cmake>
+
+  <cmake id = 'rospack'>
+    <branch repo="github/wg-debs" 
+            module="rospack-release"
+            checkoutdir="rospack"
+            version="debian/ros-fuerte-rospack_2.0.13_lucid"/>
+  </cmake>
+
+  <cmake id = 'catkin'>
+    <branch repo="github/ros" 
+            module="catkin"
+            version="debian/ros-fuerte-catkin_0.4.4_lucid"/>
+  </cmake>
+
+  <cmake id = 'genmsg'>
+    <branch repo="github/wg-debs" 
+            module="genmsg-release"
+            checkoutdir="genmsg"
+            version="debian/ros-fuerte-genmsg_0.3.10_lucid"/>
+    <dependencies>
+      <dep package="catkin"/>
+    </dependencies>
+  </cmake>
+
+  <cmake id = 'std_msgs'>
+    <branch repo="github/wg-debs" 
+            module="std_msgs-release"
+            checkoutdir="std_msgs"
+            version="debian/ros-fuerte-std-msgs_0.4.8_lucid"/>
+    <dependencies>
+      <dep package="catkin"/>
+      <dep package="genmsg"/>
+      <!-- Not real dependencies, but until I figure out how to tell jhbuild else, put them here -->
+      <dep package="gencpp"/>
+      <dep package="genpy"/>
+      <dep package="genlisp"/>
+    </dependencies>
+  </cmake>
+
+  <cmake id = 'common_msgs'>
+    <branch repo="github/wg-debs" 
+            module="common_msgs-release"
+            checkoutdir="common_msgs"
+            version="debian/ros-fuerte-common-msgs_1.8.7_lucid"/>
+    <dependencies>
+      <dep package="catkin"/>
+      <dep package="genmsg"/>
+    </dependencies>
+  </cmake>
+
+  <cmake id = 'roscpp_core'>
+    <branch repo="github/wg-debs" 
+            module="roscpp_core-release"
+            checkoutdir="roscpp_core"
+            version="debian/ros-fuerte-roscpp-core_0.2.5_lucid"/>
+    <dependencies>
+      <dep package="catkin"/>
+      <dep package="ros"/>
+    </dependencies>
+  </cmake>
+
+  <cmake id = 'gencpp'>
+    <branch repo="github/wg-debs" 
+            module="gencpp-release"
+            checkoutdir="gencpp"
+            version="debian/ros-fuerte-gencpp_0.3.4_lucid"/>
+    <dependencies>
+      <dep package="catkin"/>
+      <dep package="genmsg"/>
+    </dependencies>
+  </cmake>
+
+  <cmake id = 'genpy'>
+    <branch repo="github/wg-debs" 
+            module="genpy-release"
+            checkoutdir="genpy"
+            version="debian/ros-fuerte-genpy_0.3.7_lucid"/>
+    <dependencies>
+      <dep package="catkin"/>
+      <dep package="genmsg"/>
+    </dependencies>
+  </cmake>
+
+  <cmake id = 'genlisp'>
+    <branch repo="github/wg-debs" 
+            module="genlisp-release"
+            checkoutdir="genlisp"
+            version="debian/ros-fuerte-genlisp_0.3.3_lucid"/>
+    <dependencies>
+      <dep package="catkin"/>
+      <dep package="genmsg"/>
+    </dependencies>
+  </cmake>
+
+  <cmake id = 'ros_comm'>
+    <branch repo="github/wg-debs" 
+            module="ros_comm-release"
+            checkoutdir="ros_comm"
+            version="debian/ros-fuerte-ros-comm_1.8.12_lucid"/>
+    <dependencies>
+      <dep package="catkin"/>
+      <dep package="std_msgs"/>
+      <dep package="roscpp_core"/>
+      <dep package="ros"/>
+      <dep package="genmsg"/>
+    </dependencies>
+  </cmake>
+
+  <cmake id = 'actionlib'>
+    <branch repo="github/wg-debs" 
+            module="actionlib-release"
+            checkoutdir="actionlib"
+            version="debian/ros-fuerte-actionlib_1.8.6_lucid"/>
+    <dependencies>
+      <dep package="ros_comm"/>
+      <dep package="ros"/>
+      <dep package="common_msgs"/>
+      <dep package="catkin"/>
+      <dep package="genmsg"/>
+    </dependencies>
+  </cmake>
+
+</moduleset>
